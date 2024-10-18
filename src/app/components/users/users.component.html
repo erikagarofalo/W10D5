@@ -1,0 +1,59 @@
+<div class="container d-flex justify-content-center">
+    <div class="card-container d-flex flex-wrap justify-content-center">
+        <div
+            *ngFor="let user of users"
+            class="user-card card mx-2 mb-3"
+            style="width: 48%"
+        >
+            <div class="card-body d-flex align-items-center">
+                <img
+                    [src]="user.image"
+                    alt="User Image"
+                    class="user-image mr-3 w-20"
+                />
+                <div class="user-info d-flex flex-column">
+                    <h5>{{ user.firstName }} {{ user.lastName }}</h5>
+                    <div
+                        *ngIf="hasTasks(user.id)"
+                        class="d-flex flex-column align-items-stretch"
+                    >
+                        <div *ngFor="let todo of combinedItems">
+                            <div
+                                *ngIf="todo.userId === user.id"
+                                class="task-container rounded-3 mt-3 d-flex"
+                                [ngClass]="{
+                                    'bg-success-subtle': todo.completed,
+                                    'bg-danger-subtle': !todo.completed
+                                }"
+                            >
+                                <div class="containerCheck m-2">
+                                    <input
+                                        type="checkbox"
+                                        [checked]="todo.completed"
+                                        (change)="toggleCompleted(todo)"
+                                    />
+                                </div>
+                                <div class="text d-flex flex-column">
+                                    <span
+                                        ><h6 class="fs-6 fw-semibold">
+                                            {{ todo.todo }}
+                                        </h6></span
+                                    >
+                                    <span
+                                        ><p class="fs-7 mb-0">
+                                            Assigned to:
+                                            {{ getName(todo.userId) }}
+                                        </p></span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="!hasTasks(user.id)">
+                        <p class="text-muted">Nessun task per l'utente</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

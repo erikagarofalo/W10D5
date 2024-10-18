@@ -1,0 +1,93 @@
+<div
+    class="container mt-5"
+    style="
+        background-image: url('../../../assets/img/shimmery-gold-stars-background-kids.jpg');
+        background-size: cover;
+        background-position: center;
+        padding: 20px;
+        border-radius: 15px;
+    "
+>
+    <h1>Welcome to Erika's Team To-do-List App</h1>
+    <div class="row">
+        <div class="col">
+            <button
+                type="button"
+                class="btn btn-gold me-2"
+                style="border: 1px solid black"
+                aria-label="View all tasks"
+            >
+                <a
+                    class="navbar-brand"
+                    [routerLink]="['/']"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                >
+                    <i class="bi bi-list-task m-1"></i>All
+                </a>
+            </button>
+            <button
+                type="button"
+                class="btn btn-success me-2"
+                aria-label="View all tasks"
+            >
+                <a class="navbar-brand" [routerLink]="['/done']">
+                    <i class="bi bi-check2-all m-1"></i>Done
+                </a>
+            </button>
+            <button
+                type="button"
+                class="btn btn-danger me-2"
+                aria-label="View all tasks"
+            >
+                <a
+                    class="navbar-brand"
+                    [routerLink]="['/undone']"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                >
+                    <i class="bi bi-three-dots m-1"></i>Undone
+                </a>
+            </button>
+            <button
+                type="button"
+                class="btn btn-gold me-2"
+                style="border: 1px solid black"
+                aria-label="View all tasks"
+            >
+                <a
+                    class="navbar-brand"
+                    [routerLink]="['/users']"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                >
+                    <i class="bi bi-people m-1"></i>Users
+                </a>
+            </button>
+        </div>
+        <div>
+            <div class="container-fluid mt-3">
+                <input
+                    type="text"
+                    placeholder="Search here"
+                    [(ngModel)]="searchInput"
+                />
+                <button
+                    type="button"
+                    class="btn btn-gold me-2"
+                    aria-label="View all tasks"
+                >
+                    <a
+                        class="navbar-brand"
+                        [routerLink]="['/']"
+                        [queryParams]="{ searchInput: searchInput }"
+                        routerLinkActive="active"
+                        [routerLinkActiveOptions]="{ exact: true }"
+                    >
+                        <i class="bi bi-search m-1"></i>Search
+                    </a>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

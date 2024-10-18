@@ -1,0 +1,31 @@
+<div class="container d-flex flex-wrap justify-content-start">
+    <ng-container *ngFor="let todo of getDone()">
+        <div
+            class="card-body mt-3 mx-2 d-flex flex-column align-items-center"
+            style="
+                width: 200px;
+                height: 300px;
+                border-radius: 0.5rem;
+                background-color: #d1e7dd;
+            "
+        >
+            <div class="containerCheck m-2">
+                <input
+                    type="checkbox"
+                    [checked]="todo.completed"
+                    (change)="toggleCompleted(todo)"
+                />
+            </div>
+            <div class="text d-flex flex-column flex-grow-1 p-2">
+                <h2 class="fs-5 fw-semibold">{{ todo.todo }}</h2>
+                <p>Author: {{ getName(todo.userId) }}</p>
+            </div>
+            <img
+                src="../../../assets/img/done.png"
+                alt="Completed"
+                class="img-fluid"
+                style="width: 80px; height: auto"
+            />
+        </div>
+    </ng-container>
+</div>
